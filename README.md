@@ -1,8 +1,8 @@
 # Traitement d'images en C
 
-Ce projet nous a été proposé dans le cadre de notre cursus en MAIN 3 à Polytech Sorbonne. Nous abordons ici le thème du **Traitement d'images en C**.
+Dans le cadre de notre cursus à Polytech Sorbonne en MAIN3, nous avons pu aborder le sujet du Traitement d'images en C.
 
-La probkématique principale était : **" Comment un ordinateur peut-il différencier deux images ? "**
+La problématique principale était : **" Comment un ordinateur peut-il différencier deux images ? "**
 
 Pour cela, nous sommes partis de deux critères qui caractérisent une image : la répartition des pixels, avec le calcul de la **moyenne quadratique locale** (mse.c) entre deux images, et la **quantité de rouge, vert et bleu** dans chaque image (differencier_pixels.c) . Cependant, ces deux critères ne sont pas suffisants. En effet, deux images identiques mais dont l'une est floue, seront considérées comme étant différentes par l'algorithme de la moyenne quadratique locale. Par ailleurs, si quelques pixels parasites sont présents dans une des images, ceci faussera certainement le résultat.
 
