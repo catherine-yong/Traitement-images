@@ -30,7 +30,7 @@ void charger_image_data(){
         exit(1);
     }
     fgets(buffer,MAX_BUFFER,fic);
-    if(buffer[0] != 'P' || buffer[1]!== '5'){
+    if(buffer[0] != 'P' || buffer[1]!= '5'){
         printf("Fichier pas au format P5!\n");
         exit(1);
     }
