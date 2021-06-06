@@ -1,5 +1,5 @@
 //fichier .h
-
+#include <float.h>
 #define MAX_L 1024
 #define MAX_H 1024
 #define MAX_LUM 255
