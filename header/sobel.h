@@ -66,7 +66,7 @@ void charger_image_data(){
 #pragma simd //???
     for (x = 0; x_size1;x++){
 #pragma simd
-        for( y = 0,y<y_size1;y++){
+        for( y = 0;y<y_size1;y++){
             image1[x][y] = (unsigned char)fgetc(fic);
         }
     }
@@ -135,9 +135,9 @@ void charger_image_fic(char* nom_fic){
        }
        /* Input of image data*/
       #pragma simd
-      for (x = 0; x < x_size1; x++) {
+      for (int x = 0; x < x_size1; x++) {
         #pragma simd
-        for (y = 0; y < y_size1; y++) {
+        for (int y = 0; y < y_size1; y++) {
            image1[x][y] = (float)fgetc(fic);
          }
       }
