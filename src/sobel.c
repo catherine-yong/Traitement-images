@@ -55,10 +55,10 @@ void filtre_sobel(){
 
 
 int main(){
-    
-    load_image_data();
-    filtre_sobel();
-    save_image_data();
+    char* nom_fic = "images/tournesol.jpeg";
+    load_image_data(nom_fic);//entrée de l'image 1
+    filtre_sobel(); //filtre sobel appliqué à l'image 1
+    save_image_data(nom_fic);// sortie de limage 2
     
     return 0;
 }
