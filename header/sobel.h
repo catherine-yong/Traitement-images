@@ -63,9 +63,9 @@ void charger_image_data(){
         exit(1);
     
     }
-#pragma simd //???
+
     for (x = 0; x_size1;x++){
-#pragma simd
+
         for( y = 0;y<y_size1;y++){
             image1[x][y] = (unsigned char)fgetc(fic);
         }
@@ -83,9 +83,9 @@ void save_image_donnee(){
     fputs("P5\n", fic);
     fprintf(fic,"%d %d\n", x_size2, y_size2);
     fprintf(fic,"%d\n",MAX_LUM);
-#pragma simd
+
     for(int x = 0;x<x_size2;x++){
-#pragma simd
+
         for(int y = 0; y<y_size2;y++){
             fputc(image2[x][y],fic);
         }
@@ -134,9 +134,9 @@ void charger_image_fic(char* nom_fic){
          exit(1);
        }
        /* Input of image data*/
-      #pragma simd
+
       for (int x = 0; x < x_size1; x++) {
-        #pragma simd
+  
         for (int y = 0; y < y_size1; y++) {
            image1[x][y] = (float)fgetc(fic);
          }
@@ -158,9 +158,9 @@ void charger_image_fic(char* nom_fic){
       fprintf(fic, "%d %d\n", x_size2, y_size2);
       fprintf(fic, "%d\n", MAX_LUM);
       /* Output of image data */
-     #pragma simd
+
       for (x = 0; x < x_size2; x++) {
-        #pragma simd
+
         for (y = 0; y < y_size2; y++) {
           fputc(image2[x][y], fic);
         }
