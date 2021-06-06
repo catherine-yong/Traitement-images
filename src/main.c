@@ -1,6 +1,6 @@
 #include "fonctions.h"
-
-int main1()
+#include "sobel.h"
+int main()
 {
     SDL_version nb;
     SDL_VERSION(&nb);
@@ -43,7 +43,9 @@ int main1()
 
     copy2 = correction_image(copy2,50,1);
     IMG_SavePNG(copy2,"t2.png");
-
+    load_image_data("t2.png");// charge l'image
+    filtre_sobel();// on lui applique le filtre
+    save_image_data("t2.png");//sortie de l'image avec le filtre de sobel
     similaires(copy2,image1);
 
     SDL_FreeSurface(image1);
