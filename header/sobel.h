@@ -11,15 +11,15 @@ float image1[MAX_L][MAX_H] __attribute__((aligned(64))),image2[MAX_L][MAX_H] __a
 
 int x_size1,y_size1,x_size2,y_size2;
 
-void charger_image_data();
-void save_image();
+void charger_image_data(char*);
+void save_image(char*);
 void charger_image_fic(char*);
 void save_image_fic(char*);
 void filtre_sobel();
 
 
-void charger_image_data(){
-    char nom_fic[MAX_NOM];
+void charger_image_data(char* nom_fic){
+
     char buffer[MAX_BUFFER];
     FILE *fic;
     int max_gris,x,y;
@@ -64,9 +64,9 @@ void charger_image_data(){
         exit(1);
     
     }
-
+#pragma omp simd
     for (x = 0; x_size1;x++){
-
+#pragma omp simd
         for( y = 0;y<y_size1;y++){
             image1[x][y] = (unsigned char)fgetc(fic);
         }
@@ -74,8 +74,8 @@ void charger_image_data(){
     fclose(fic);
 }
 
-void save_image_donnee(){
-    char nom_fichier[MAX_NOM];
+void save_image_donnee(char* nom_fichier){
+
     FILE* fic;
     
     printf("Nom du fichier ?\n");
@@ -84,9 +84,9 @@ void save_image_donnee(){
     fputs("P5\n", fic);
     fprintf(fic,"%d %d\n", x_size2, y_size2);
     fprintf(fic,"%d\n",MAX_LUM);
-
+#pragma omp simd
     for(int x = 0;x<x_size2;x++){
-
+#pragma omp simd
         for(int y = 0; y<y_size2;y++){
             fputc(image2[x][y],fic);
         }
@@ -135,9 +135,9 @@ void charger_image_fic(char* nom_fic){
          exit(1);
        }
        /* Input of image data*/
-
+#pragma omp simd
       for (int x = 0; x < x_size1; x++) {
-  
+#pragma omp simd
         for (int y = 0; y < y_size1; y++) {
            image1[x][y] = (float)fgetc(fic);
          }
@@ -146,11 +146,10 @@ void charger_image_fic(char* nom_fic){
     }
 
     void save_image_fic(char *nom_fichier)
-    /* Output of image2[ ][ ], x_size2, y_size2 */
-    /* into pgm file with header & body information */
+
     {
-      FILE *fic; /* File pointer */
-      int x, y; /* Loop variable */
+      FILE *fic;
+      int x, y;
 
       fic = fopen(nom_fichier, "wb");
       /* output of pgm file header information */
@@ -159,9 +158,9 @@ void charger_image_fic(char* nom_fic){
       fprintf(fic, "%d %d\n", x_size2, y_size2);
       fprintf(fic, "%d\n", MAX_LUM);
       /* Output of image data */
-
+#pragma omp simd
       for (x = 0; x < x_size2; x++) {
-
+#pragma omp simd
         for (y = 0; y < y_size2; y++) {
           fputc(image2[x][y], fic);
         }
