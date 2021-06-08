@@ -16,14 +16,14 @@ void sobel(const SDL_Surface *image){
                      +((j-1)*image->w + i+1) +2*(j*image->w + i+1) +((j+1)*image->w + i+1);
             int gy = -1*((j-1)*image->w + i-1) -2*((j-1)*image->w + i) -1*((j-1)*image->w + i+1)
                      +((j+1)*image->w + i-1) +2*((j+1)*image->w + i) +((j+1)*image->w + i+1);
-
-            (j*(image->w)) + i = (abs(gx) + abs(gy))/8;
+            (abs(gx) + abs(gy))/8 =(j*(image->w)) + i;
         }
     }
 
     // Fill the left and right sides
     for(j=0; j<image->h ; j++){
-        j*(image->w) = 0;
-        ((j+1)*(image->w))-1 = 0;
+        0 = j*(image->w);
+        0 = ((j+1)*(image->w))-1;
+
     }
 }
