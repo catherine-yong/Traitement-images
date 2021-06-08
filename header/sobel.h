@@ -20,11 +20,11 @@ void filtre_sobel();
 
 void charger_image_data(char* nom_fic){
 
-    char buffer[MAX_BUFFER];
+    //char buffer[MAX_BUFFER];
     FILE *fic;
     int max_gris,x,y;
-    printf("Nom du fichier d'entrée : ");
-    scanf("%s", nom_fic);
+    //printf("Nom du fichier d'entrée : ");
+    //scanf("%s", nom_fic);
     fic = fopen(nom_fic,"rb");
     if (fic == NULL){
         printf("Fichier inexistant\n");
@@ -64,9 +64,9 @@ void charger_image_data(char* nom_fic){
         exit(1);
     
     }
-#pragma omp simd
+
     for (x = 0; x_size1;x++){
-#pragma omp simd
+
         for( y = 0;y<y_size1;y++){
             image1[x][y] = (unsigned char)fgetc(fic);
         }
@@ -84,9 +84,9 @@ void save_image_donnee(char* nom_fichier){
     fputs("P5\n", fic);
     fprintf(fic,"%d %d\n", x_size2, y_size2);
     fprintf(fic,"%d\n",MAX_LUM);
-#pragma omp simd
+
     for(int x = 0;x<x_size2;x++){
-#pragma omp simd
+
         for(int y = 0; y<y_size2;y++){
             fputc(image2[x][y],fic);
         }
@@ -135,9 +135,9 @@ void charger_image_fic(char* nom_fic){
          exit(1);
        }
        /* Input of image data*/
-#pragma omp simd
+
       for (int x = 0; x < x_size1; x++) {
-#pragma omp simd
+
         for (int y = 0; y < y_size1; y++) {
            image1[x][y] = (float)fgetc(fic);
          }
@@ -158,9 +158,9 @@ void charger_image_fic(char* nom_fic){
       fprintf(fic, "%d %d\n", x_size2, y_size2);
       fprintf(fic, "%d\n", MAX_LUM);
       /* Output of image data */
-#pragma omp simd
+
       for (x = 0; x < x_size2; x++) {
-#pragma omp simd
+
         for (y = 0; y < y_size2; y++) {
           fputc(image2[x][y], fic);
         }
