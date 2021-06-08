@@ -43,9 +43,7 @@ int main()
 
     copy2 = correction_image(copy2,50,1);
     IMG_SavePNG(copy2,"t2.png");
-    charger_image_data("t2.png");// charge l'image
-    filtre_sobel();// on lui applique le filtre
-    save_image("t2.png");//sortie de l'image avec le filtre de sobel
+    sobel(copy2);
     similaires(copy2,image1);
 
     SDL_FreeSurface(image1);
