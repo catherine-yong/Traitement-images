@@ -3,7 +3,7 @@ CCFLAGS = -Wall -I../header -I../images
 LDFLAGS = -lSDL2 -lSDL2_image -lm 
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c = .o)
-EXEC = main1
+EXEC = main
 
 all: $(EXEC)
 

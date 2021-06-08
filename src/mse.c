@@ -1,4 +1,4 @@
-#include "fonctions.h"
+#include "../header/fonctions.h"
 
 #define SEUIL 15000
 

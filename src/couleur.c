@@ -1,4 +1,4 @@
-#include "fonctions.h"
+#include "../header/fonctions.h"
 
 // commande pour compiler : gcc differencier_pixels.c -lSDL -lSDL_image
 

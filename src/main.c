@@ -1,12 +1,13 @@
-#include "fonctions.h"
-#include "sobel.h"
+#include "../header/fonctions.h"
+#include "../header/sobel.h"
+
 int main()
 {
     SDL_version nb;
     SDL_VERSION(&nb);
 
-    char *filename1 = "images/tournesol.jpeg";
-    char *filename2 = "images/house.png";
+    char *filename1 = "images/pingouin.pgm";
+    char *filename2 = "images/pingouin.pgm";
     
     SDL_Surface *image1 = IMG_Load(filename1);
     SDL_Surface *copy1 = IMG_Load(filename1);
@@ -38,12 +39,14 @@ int main()
         return -1;
     }
 
-    copy1 = correction_image(copy1,50,10);
-    IMG_SavePNG(copy1,"t1.png");
+    copy1 = corr_image(copy1,50,10);
+    IMG_SavePNG(copy1,"t1.pgm");
 
-    copy2 = correction_image(copy2,50,1);
-    IMG_SavePNG(copy2,"t2.png");
-    sobel(copy2);
+    copy2 = corr_image(copy2,50,1);
+    IMG_SavePNG(copy2,"t2.pgm");
+    charger_image_data("t2.pgm");// charge l'image
+    filtre_sobel();// on lui applique le filtre
+    save_image_donnee("t2.pgm");//sortie de l'image avec le filtre de sobel
     similaires(copy2,image1);
 
     SDL_FreeSurface(image1);
