@@ -1,3 +1,4 @@
+
 #include <string.h>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
@@ -11,18 +12,18 @@ void sobel(const SDL_Surface *image){
     // Apply the filter
     for(j=1; j<image->h-1; j++){
         for(i=1; i<image->w-1; i++){
-            int gx = -[(j-1)*image->w + i-1] -2*[  j*image->w + i-1] -[(j+1)*image->w + i-1]
-                     +[(j-1)*image->w + i+1] +2*[  j*image->w + i+1] +[(j+1)*image->w + i+1];
-            int gy = -[(j-1)*image->w + i-1] -2*[(j-1)*image->w + i] -[(j-1)*image->w + i+1]
-                     +[(j+1)*image->w + i-1] +2*[(j+1)*image->w + i] +[(j+1)*image->w + i+1];
+            int gx = -1*((j-1)*image->w + i-1) -2*(j*image->w + i-1) -1*((j+1)*image->w + i-1)
+                     +((j-1)*image->w + i+1) +2*(j*image->w + i+1) +((j+1)*image->w + i+1);
+            int gy = -1*((j-1)*image->w + i-1) -2*((j-1)*image->w + i) -1*((j-1)*image->w + i+1)
+                     +((j+1)*image->w + i-1) +2*((j+1)*image->w + i) +((j+1)*image->w + i+1);
 
-            j*image->w + i = (abs(gx) + abs(gy))/8;
+            (j*(image->w)) + i = (abs(gx) + abs(gy))/8;
         }
     }
 
     // Fill the left and right sides
     for(j=0; j<image->h ; j++){
-        j*image->w = 0;
-        (j+1)*image->w-1 = 0;
+        j*(image->w) = 0;
+        ((j+1)*(image->w))-1 = 0;
     }
 }
